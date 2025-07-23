@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BARBIELAND FILMES ✨</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+
+  <style>
+    /* Fundo com padrão de xadrez rosa */
+    body {
+      background-color: #fce4ec; /* Cor de fallback se a imagem não carregar */
+      background-image: url('https://www.transparenttextures.com/patterns/pink-square-tile.png'); /* Padrão de xadrez rosa */
+      background-repeat: repeat;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+      margin: 0;
+      padding: 0;
+      cursor: url('https://www.cursor.cc/cursor/arrow_hand_pink_glitter.cur'), auto; /* Exemplo de cursor rosa com glitter */
+    }
+
+    /* Estilo do cabeçalho inspirado na imagem Popteen */
+    header {
+      padding: 32px 0 24px 0;
+      text-align: center;
+      background: linear-gradient(90deg, #ffc0cb 0%, #fff 100%); /* Gradiente rosa claro */
+      border-bottom: 3px dashed #ff66c4;
+      box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+      position: relative; /* Para posicionar adesivos no cabeçalho */
+      overflow: hidden; /* Garante que adesivos não "vazem" */
+    }
+
+    /* Estilo do título principal - BARBIE FILMES */
+    .titulo-popteen {
+      font-family: 'Orbitron', sans-serif; /* Fonte que lembra tecnologia Y2K */
+      font-size: 3.5rem; /* Tamanho grande */
+      font-weight: 700;
+      color: #ff00ff; /* Rosa choque / Magenta */
+      text-shadow:
+        -1px -1px 0 #d100b7, /* Borda interna */
+        1px -1px 0 #d100b7,
+        -1px 1px 0 #d100b7,
+        1px 1px 0 #d100b7,
+        /* Sombra para efeito 3D */
+        2px 2px 0px #e000e0,
+        4px 4px 0px #c000c0,
+        6px 6px 0px #a000a0,
+        8px 8px 0px #800080,
+        /* Brilho neon/glitter */
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 30px #ff00ff,
+        0 0 40px #ff00ff;
+      letter-spacing: 5px; /* Espaçamento entre letras */
+      display: inline-block; /* Para aplicar transformações e sombras corretamente */
+      margin: 0 auto; /* Centraliza o bloco */
+      padding: 10px 20px; /* Preenchimento ao redor do texto */
+      background: linear-gradient(180deg, #ff99cc 0%, #ff66cc 100%); /* Gradiente no texto */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transform: skewX(-5deg); /* Leve inclinação para dar dinamismo */
+    }
+
+    /* Adesivos no cabeçalho */
+    .header-sticker {
+        position: absolute;
+        width: 80px;
+        height: auto;
+        opacity: 0.9;
+    }
+    .sticker-top-left { top: 10px; left: 20px; transform: rotate(-15deg); }
+    .sticker-top-right { top: 5px; right: 15px; transform: rotate(10deg); }
+    .sticker-bottom-right { bottom: 10px; right: 25px; transform: rotate(20deg); }
+
+
+    /* Estilo para a imagem da Hello Kitty no cabeçalho (ao lado do título) */
+    .hello-kitty-img {
+      width: 60px;
+      height: 60px;
+      vertical-align: middle;
+      margin: 0 10px; /* Espaçamento ao redor da imagem */
+    }
+
+    /* Contêiner da vitrine dos filmes */
+    .vitrine-filmes {
+        max-width: 1000px; /* Largura um pouco maior para a vitrine */
+        margin: 40px auto;
+        padding: 30px;
+        background: #fff;
+        border-radius: 25px; /* Cantos mais arredondados */
+        box-shadow: 0 0 30px 5px #ffe0f7; /* Sombra mais evidente */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 30px; /* Mais espaço entre os cartões */
+        justify-items: center;
+        border: 4px dashed #ff99cc; /* Borda tracejada na vitrine */
+    }
+
+    /* Estilo de cada "vitrine" de filme */
+    .movie-card {
+        background-color: #ffe8fa; /* Rosa mais claro */
+        border: 3px solid #ff66c4; /* Borda rosa vibrante */
+        border-radius: 18px; /* Cantos arredondados */
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 6px 12px rgba(255, 182, 193, 0.4); /* Sombra mais pronunciada */
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden; /* Para não vazar conteúdo */
+    }
+
+    .movie-card:hover {
+        transform: scale(1.07) rotate(2deg); /* Mais dramatico ao passar o mouse */
+        box-shadow: 0 8px 16px rgba(255, 182, 193, 0.6);
+    }
+
+    .movie-card img {
+        max-width: 100%;
+        height: 250px; /* Altura fixa para as imagens */
+        object-fit: cover; /* Ajusta a imagem sem distorcer */
+        border-radius: 12px;
+        margin-bottom: 12px;
+        border: 2px solid #ff00ff; /* Borda magenta na imagem */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .movie-card h3 {
+        color: #d100b7;
+        font-size: 1.3rem; /* Título maior */
+        margin-bottom: 8px;
+        font-family: 'Pacifico', cursive; /* Fonte mais "fofa" para os títulos dos filmes */
+        text-shadow: 0 0 3px #fff0f8;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .movie-card .ano-filme {
+        color: #ff66c4;
+        font-size: 1em;
+        font-style: italic;
+        margin-top: 5px;
+        font-family: 'Press Start 2P', cursive; /* Fonte pixelada para o ano */
+    }
+
+    /* Estilo do rodapé */
+    footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 25px;
+        background: linear-gradient(90deg, #ffc0cb 0%, #fff 100%);
+        border-top: 3px dashed #ff66c4;
+        color: #ff66c4;
+        font-size: 1.1em;
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        box-shadow: 0 -4px 8px rgba(255, 182, 193, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="header-sticker sticker-top-left" src="https://i.pinimg.com/originals/18/74/d3/1874d39f4d7f5c225b6a71e8a2a0d7a0.png" alt="Adesivo Estrela">
+    <img class="header-sticker sticker-top-right" src="https://i.pinimg.com/originals/e3/31/6f/e3316f7f6a8b7c7b20f019a2e6e16b9b.png" alt="Adesivo Laço">
+    <div class="titulo-popteen">BARBIELAND FILMES</div>
+    <img class="header-sticker sticker-bottom-right" src="https://i.pinimg.com/originals/4d/9d/21/4d9d2112e7a0b3f5d5e2e8e9e1f5e8f4.png" alt="Adesivo Telefone">
+  </header>
+
+  <main class="vitrine-filmes">
+    <h2 style="grid-column: 1 / -1; color:#ff66c4;text-align:center;font-family:'Pacifico',cursive;margin-bottom:24px;">Sua Coleção Cor-de-Rosa!</h2>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMjA4Njk5MzE2OF5BMl5BanBnXkFtZTcwODQ0MTIzMQ@@._V1_FMjpg_UX1000_.jpg" alt="Barbie e as Doze Princesas Bailarinas">
+        <h3>Barbie e as Doze Princesas Bailarinas</h3>
+        <p class="ano-filme">(2006)</p>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BYzEzMmM2YTMtZmY3NC00ODVhLTgzOGUtMzk4MDMxNGY1NGVlXkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_FMjpg_UX1000_.jpg" alt="Barbie em A Princesa e a Plebeia">
+        <h3>Barbie em A Princesa e a Plebeia</h3>
+        <p class="ano-filme">(2004)</p>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BNWEyN2ZlNTYtYTJmMC00Yjg4LTg4YmMtZjViNTUzM2FmNDViXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Barbie e o Castelo de Diamante">
+        <h3>Barbie e o Castelo de Diamante</h3>
+        <p class="ano-filme">(2008)</p>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BOGZmNWIyOWUtNmU2Ni00YTM4LTk3MmItODMyMzE5NDI4YzMyXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Barbie em O Lago dos Cisnes">
+        <h3>Barbie em O Lago dos Cisnes</h3>
+        <p class="ano-filme">(2003)</p>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BNTkzNzUwNzgtM2FjNy00NGE2LWEzNTItNWMzMmI4NzkwZDYxXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Barbie em A Princesa da Ilha">
+        <h3>Barbie em A Princesa da Ilha</h3>
+        <p class="ano-filme">(2007)</p>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMGRjZTdlMzMtMmRkOS00NzY1LTg5ZTgtOGJjNzgwYTZkYzE5XkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Barbie em O Quebra-Nozes">
+        <h3>Barbie em O Quebra-Nozes</h3>
+        <p class="ano-filme">(2001)</p>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMzY1NjIyYzgtNjY2Yy00NzZmLThhYTItYTI5YjJmYjhiMWY0XkEyXkFqcGdeQXVyNzg2Mzc2MDA@._V1_FMjpg_UX1000_.jpg" alt="Barbie e o Reino Secreto">
+        <h3>Barbie e o Reino Secreto</h3>
+        <p class="ano-filme">(2014)</p>
+    </div>
+
+    </main>
+
+  <footer>
+    <p>Feito com amor, glitter e muito estilo anos 2000! ✨💖</p>
+  </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BARBIELAND FILMES ✨</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+
+  <style>
+    /* Fundo com padrão de xadrez rosa */
+    body {
+      background-color: #fce4ec; /* Cor de fallback se a imagem não carregar */
+      background-image: url('https://www.transparenttextures.com/patterns/pink-square-tile.png'); /* Padrão de xadrez rosa */
+      background-repeat: repeat;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+      margin: 0;
+      padding: 0;
+      cursor: url('https://www.cursor.cc/cursor/arrow_hand_pink_glitter.cur'), auto; /* Exemplo de cursor rosa com glitter */
+    }
+
+    /* Estilo do cabeçalho inspirado na imagem Popteen */
+    header {
+      padding: 32px 0 24px 0;
+      text-align: center;
+      background: linear-gradient(90deg, #ffc0cb 0%, #fff 100%); /* Gradiente rosa claro */
+      border-bottom: 3px dashed #ff66c4;
+      box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+      position: relative; /* Para posicionar adesivos no cabeçalho */
+      overflow: hidden; /* Garante que adesivos não "vazem" */
+    }
+
+    /* Estilo do título principal - BARBIE FILMES */
+    .titulo-popteen {
+      font-family: 'Orbitron', sans-serif; /* Fonte que lembra tecnologia Y2K */
+      font-size: 3.5rem; /* Tamanho grande */
+      font-weight: 700;
+      color: #ff00ff; /* Rosa choque / Magenta */
+      text-shadow:
+        -1px -1px 0 #d100b7, /* Borda interna */
+        1px -1px 0 #d100b7,
+        -1px 1px 0 #d100b7,
+        1px 1px 0 #d100b7,
+        /* Sombra para efeito 3D */
+        2px 2px 0px #e000e0,
+        4px 4px 0px #c000c0,
+        6px 6px 0px #a000a0,
+        8px 8px 0px #800080,
+        /* Brilho neon/glitter */
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 30px #ff00ff,
+        0 0 40px #ff00ff;
+      letter-spacing: 5px; /* Espaçamento entre letras */
+      display: inline-block; /* Para aplicar transformações e sombras corretamente */
+      margin: 0 auto; /* Centraliza o bloco */
+      padding: 10px 20px; /* Preenchimento ao redor do texto */
+      background: linear-gradient(180deg, #ff99cc 0%, #ff66cc 100%); /* Gradiente no texto */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transform: skewX(-5deg); /* Leve inclinação para dar dinamismo */
+    }
+
+    /* Adesivos no cabeçalho */
+    .header-sticker {
+        position: absolute;
+        width: 80px;
+        height: auto;
+        opacity: 0.9;
+    }
+    .sticker-top-left { top: 10px; left: 20px; transform: rotate(-15deg); }
+    .sticker-top-right { top: 5px; right: 15px; transform: rotate(10deg); }
+    .sticker-bottom-right { bottom: 10px; right: 25px; transform: rotate(20deg); }
+
+
+    /* Estilo para a imagem da Hello Kitty no cabeçalho (ao lado do título) */
+    .hello-kitty-img {
+      width: 60px;
+      height: 60px;
+      vertical-align: middle;
+      margin: 0 10px; /* Espaçamento ao redor da imagem */
+    }
+
+    /* Contêiner da vitrine dos filmes */
+    .vitrine-filmes {
+        max-width: 1000px; /* Largura um pouco maior para a vitrine */
+        margin: 40px auto;
+        padding: 30px;
+        background: #fff;
+        border-radius: 25px; /* Cantos mais arredondados */
+        box-shadow: 0 0 30px 5px #ffe0f7; /* Sombra mais evidente */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 30px; /* Mais espaço entre os cartões */
+        justify-items: center;
+        border: 4px dashed #ff99cc; /* Borda tracejada na vitrine */
+    }
+
+    /* Estilo de cada "vitrine" de filme */
+    .movie-card {
+        background-color: #ffe8fa; /* Rosa mais claro */
+        border: 3px solid #ff66c4; /* Borda rosa vibrante */
+        border-radius: 18px; /* Cantos arredondados */
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 6px 12px rgba(255, 182, 193, 0.4); /* Sombra mais pronunciada */
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden; /* Para não vazar conteúdo */
+    }
+
+    .movie-card:hover {
+        transform: scale(1.07) rotate(2deg); /* Mais dramatico ao passar o mouse */
+        box-shadow: 0 8px 16px rgba(255, 182, 193, 0.6);
+    }
+
+    .movie-card img {
+        max-width: 100%;
+        height: 250px; /* Altura fixa para as imagens */
+        object-fit: cover; /* Ajusta a imagem sem distorcer */
+        border-radius: 12px;
+        margin-bottom: 12px;
+        border: 2px solid #ff00ff; /* Borda magenta na imagem */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .movie-card h3 {
+        color: #d100b7;
+        font-size: 1.3rem; /* Título maior */
+        margin-bottom: 8px;
+        font-family: 'Pacifico', cursive; /* Fonte mais "fofa" para os títulos dos filmes */
+        text-shadow: 0 0 3px #fff0f8;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .movie-card .ano-filme {
+        color: #ff66c4;
+        font-size: 1em;
+        font-style: italic;
+        margin-top: 5px;
+        font-family: 'Press Start 2P', cursive; /* Fonte pixelada para o ano */
+    }
+
+    /* Estilo do rodapé */
+    footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 25px;
+        background: linear-gradient(90deg, #ffc0cb 0%, #fff 100%);
+        border-top: 3px dashed #ff66c4;
+        color: #ff66c4;
+        font-size: 1.1em;
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        box-shadow: 0 -4px 8px rgba(255, 182, 193, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="header-sticker sticker-top-left" src="https://i.pinimg.com/originals/18/74/d3/1874d39f4d7f5c225b6a71e8a2a0d7a0.png" alt="Adesivo Estrela">
+    <img class="header-sticker sticker-top-right" src="https://i.pinimg.com/originals/e3/31/6f/e3316f7f6a8b7c7b20f019a2e6e16b9b.png" alt="Adesivo Laço">
+    <div class="titulo-popteen">BARBIELAND FILMES</div>
+    <img class="header-sticker sticker-bottom-right" src="https://i.pinimg.com/originals/4d/9d/21/4d9d2112e7a0b3f5d5e2e8e9e1f5e8f4.png" alt="Adesivo Telefone">
+  </header>
+
+  <main class="vitrine-filmes">
+    <h2 style="grid-column: 1 / -1; color:#ff66c4;text-align:center;font-family:'Pacifico',cursive;margin-bottom:24px;">Sua Coleção Cor-de-Rosa!</h2>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMjA4Njk5MzE2OF5BMl5BanBnXkFtZTcwODQ0MTIzMQ@@._V1_FMjpg_UX1000_.jpg" alt="Barbie e as Doze Princesas Bailarinas">
+        <h3>Barbie e as Doze Princesas Bailarinas</h3>
+        <p class="ano-filme">(2006)</p>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BYzEzMmM2YTMtZmY3NC00ODVhLTgzOGUtMzk4MDMxNGY1NGVlXkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_FMjpg_UX1000_.jpg" alt="Barbie em A Princesa e a Plebeia">
+        <h3>Barbie em A Princesa e a Plebeia</h3>
+        <p class="ano-filme">(2004)</p>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BNWEyN2ZlNTYtYTJmMC00Yjg4LTg4YmMtZjViNTUzM2FmNDViXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Barbie e o Castelo de Diamante">
+        <h3>Barbie e o Castelo de Diamante</h3>
+        <p class="ano-filme">(2008)</p>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BOGZmNWIyOWUtNmU2Ni00YTM4LTk3MmItODMyMzE5NDI4YzMyXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Barbie em O Lago dos Cisnes">
+        <h3>Barbie em O Lago dos Cisnes</h3>
+        <p class="ano-filme">(2003)</p>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BNTkzNzUwNzgtM2FjNy00NGE2LWEzNTItNWMzMmI4NzkwZDYxXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Barbie em A Princesa da Ilha">
+        <h3>Barbie em A Princesa da Ilha</h3>
+        <p class="ano-filme">(2007)</p>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMGRjZTdlMzMtMmRkOS00NzY1LTg5ZTgtOGJjNzgwYTZkYzE5XkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg" alt="Barbie em O Quebra-Nozes">
+        <h3>Barbie em O Quebra-Nozes</h3>
+        <p class="ano-filme">(2001)</p>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BMzY1NjIyYzgtNjY2Yy00NzZmLThhYTItYTI5YjJmYjhiMWY0XkEyXkFqcGdeQXVyNzg2Mzc2MDA@._V1_FMjpg_UX1000_.jpg" alt="Barbie e o Reino Secreto">
+        <h3>Barbie e o Reino Secreto</h3>
+        <p class="ano-filme">(2014)</p>
+    </div>
+
+    </main>
+
+  <footer>
+    <p>Feito com amor, glitter e muito estilo anos 2000! ✨💖</p>
+  </footer>
+
+</body>
+</html>
